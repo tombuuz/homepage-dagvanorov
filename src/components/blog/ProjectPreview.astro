@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	project: CollectionEntry<"project">;
+}
+
+const { project } = Astro.props;
+const { title, description, coverImage, projectUrl, githubUrl, technologies } = project.data;
+---
+
+<article class="group relative flex flex-col items-start">
+	{
+		coverImage && (
+			<div class="mb-4 aspect-video w-full overflow-hidden rounded-lg">
+				<a href={projectUrl} target="_blank" rel="noopener noreferrer">
+					<Image
+						alt={coverImage.alt || title}
+						class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+						src={coverImage.src}
+					/>
+				</a>
+			</div>
+		)
+	}
+	<div class="flex w-full flex-col">
+		<h2 class="title text-lg">
+			<a href={projectUrl} target="_blank" rel="noopener noreferrer">
+				{title}
+				<span class="sr-only"> (opens in a new tab)</span>
+				<Icon aria-hidden="true" class="ms-1 inline-block h-4 w-4" name="mdi:open-in-new" />
+			</a>
+		</h2>
+		<p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{description}</p>
+		<div class="mt-4 flex flex-wrap gap-2">
+			{
+				technologies?.map((tech) => (
+					<span class="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600 dark:bg-gray-800 dark:text-gray-400">
+						{tech}
+					</span>
+				))
+			}
+		</div>
+		{
+			githubUrl && (
+				<a
+					class="hover:text-accent mt-4 inline-flex items-center text-sm text-gray-600 dark:text-gray-400"
+					href={githubUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<Icon aria-hidden="true" class="me-1 h-4 w-4" name="mdi:github" />
+					View on GitHub
+					<span class="sr-only"> (opens in a new tab)</span>
+				</a>
+			)
+		}
+	</div>
+</article>
