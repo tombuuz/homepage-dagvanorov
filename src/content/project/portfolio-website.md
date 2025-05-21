@@ -5,7 +5,7 @@ coverImage:
   src: "/src/content/post/cover-image/cover.png"
   alt: "Portfolio website screenshot"
 projectUrl: "https://example.com/portfolio"
-githubUrl: "https://github.com/username/portfolio"
+githubUrl: "https://github.com/tombuuz"
 technologies: ["Astro", "TypeScript", "Tailwind CSS", "Markdown"]
 order: 2
 ---

@@ -23,9 +23,11 @@ const sortedProjects = allProjects.sort((a, b) => a.data.order - b.data.order);
 	<section>
 		<h1 class="title mb-6">Hello World!</h1>
 		<p class="mb-4">
-			Hi, I'm a theme for Astro, a simple starter that you can use to create your website or blog.
-			If you want to know more about how you can customise me, add more posts, and make it your own,
-			click on the GitHub icon link below and it will take you to my repo.
+			Thank you for visiting my corner of the internet. Currently, it's under construction. So
+			please visit this at the moment <a
+				href="https://tombuuz.notion.site/Hello-15b51cb55daa806ba45cf75d70a5e765?pvs=4"
+				class="text-accent hover:underline">here</a
+			>.
 		</p>
 		<SocialList />
 	</section>
@@ -33,11 +35,7 @@ const sortedProjects = allProjects.sort((a, b) => a.data.order - b.data.order);
 	<section class="mt-16">
 		<h2 class="title text-accent mb-6 text-xl">Projects</h2>
 		<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-			{
-				sortedProjects.map((project) => (
-					<ProjectPreview project={project} />
-				))
-			}
+			{sortedProjects.map((project) => <ProjectPreview project={project} />)}
 		</div>
 	</section>
 
